@@ -326,3 +326,126 @@ parseFloat(): NaN | Type: number
 Boolean(): false | Type: boolean
 String(): undefined | Type: string
  */
+
+
+// Challenge 4: What does this print, And Why?
+ 
+console.log("\===== Challenge 4 Output =====");
+
+// Expression 1: "5" + 3
+// Prediction:
+// Output: "53"
+// Type: string 
+// Why: The + operator performs string concatenation when one operand is a string.
+console.log('"5" + 3 =', "5" + 3);
+
+// Expression 2: "5" - 3
+// Prediction:
+// Output: 2
+// Type: number
+// Why: The - operator forces numeric conversion.
+console.log('"5" - 3 =', "5" - 3);
+
+// Expression 3: "5" * "2"
+// Prediction:
+// Output: 10
+// Type: number
+// Why: Multiplication forces both values to numbers.
+console.log('"5" * "2" =', "5" * "2");
+
+// Expression 4: true + 1
+// Prediction:
+// Output: 2
+// Type: number
+// Why: true converts to 1
+console.log("true + 1 =", true + 1);
+
+// Expression 5: true + "1"
+// Prediction:
+// Output: 0
+// Type: number
+// Why: String concatenation occurs.
+console.log('true + "1" =', true + "1");
+
+// Expression 6: false + null
+// Prediction:
+// Output: 0
+// Type: number
+// Why: false becomes 0 and null becomes 0.
+console.log("false + null =", false + null);
+
+// Expression 7: null + undefined
+// Prediction:
+// Output: NaN
+// Type: number
+// Why: undefined cannot converted into a valid number.
+console.log("null + undefined =", null + undefined);
+
+// Expression 8: 1/0
+// Prediction:
+// Output: Infinity
+// Type: number
+// Why: Division by zero produces Infinity.
+console.log("1/0 =", 1/0);
+
+// Expression 9: 0/0
+// Prediction:
+// Output: NaN
+// Type: number
+// Why: Zero divided by zero is undefine mathematically.
+console.log("0/0 =", 0/0);
+
+// Expression 10: "abc" -1
+// Prediction:
+// Output: NaN
+// Type: number
+// Why: "abc" cannot be converted into a number.
+console.log('"abc" - 1 =', "abc" - 1);
+
+// Expression 11: [] + []
+// Prediction:
+// Output: ""
+// Type: string
+// Why: Empty arrays become empty strings.
+console.log("[] + [] =", [] + []);
+
+
+// Expression 12: [1] + [2]
+// Prediction:
+// Output: "12"
+// Type: string
+// Why: Arrays convert to strings before concatenation.
+console.log("[1] + [2] =", [1] + [2]);
+
+/* Interview explanation 
+
+Many of these examples demonstrate JavaScript's automatic
+type coercion. JavaScript often attempts to convert values
+to compatible data types before performing an operation.
+
+The + operator is special because it is used for both
+addition and string concatenation. If one value is a
+string, JavaScript often converts the other value to a 
+string as well.
+
+Mathematical operators such as -, *, and / force numeric
+conversion. If JavaScript cannot convert a value into a valid number, the result becomes NaN.
+
+Arrays are objects, but when used with the + operator
+they are converted to strings using their string representation.
+
+*/
+
+/* Console Output 
+
+===== Challenge 4 Output ====
+"5" + 3 = 53
+"5" - 3 = 2
+"5" * "2" = 10
+true + 1 = 2
+true + "1" = true1 
+false + nunll = 0
+null + undefined = NaN 
+1 / 0 = Infinity
+0 / 0 = NaN
+*/
