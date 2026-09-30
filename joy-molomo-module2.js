@@ -152,3 +152,177 @@ typeof [1, 2, 3]: object
 typeof function() {}: function
 */
 
+
+
+// Challenge 3: Convert this string to a number, in five different ways
+
+// These are the starting values provided by the challenge.
+let a = "123";
+let b = "3.14";
+let c = "hello";
+let d = "42abc";
+let e = "";
+let f = 0; 
+let g = null;
+let h = undefined;
+
+// This helper function redueces repeated code. 
+// It applies all required conversions and displays both the converted value and its data type.
+function showConversions(variableName, value) {
+    console.log('\n===== ${variableName}:, value} =====');
+    console.log("Original Value:", value);
+    console.log("Original Type:", typeof value);
+
+    console.log(
+        "Number():",
+        Number(value),
+        "| Type:",
+        typeof Number(value)
+    );
+
+    console.log(
+        "parseInt():",
+        parseInt(value),
+        "| Type:",
+        typeof parseInt(value)
+    );
+
+    console.log(
+        "parseFloat():",
+        parseFloat(value),
+        "| Type:",
+        typeof parseFloat(value)
+    );
+
+    console.log(
+        "Boolean():",
+        Boolean(value),
+        "| Type:",
+        typeof Boolean(value)
+    );
+
+    console.log(
+        "String():",
+        String(value),
+        "| Type:",
+        typeof String(value)
+    );
+
+    console.log(
+        "String():",
+        String(value),
+        "| Type:",
+        typeof String(value)
+    );
+}
+
+console.log("\n===== Challenge 3 Output =====");
+
+// Conversions for every starting value
+showConversions("a = '123'", a);
+showConversions("b = '3.14'", b);
+showConversions("c = 'hello'", c);
+showConversions("d = '42abc'", d);
+showConversions("e =''", e);
+showConversions("f = 0", f);
+showConversions("g = null", g);
+showConversions("h = undefined", h);
+
+/* Interview answers
+
+1. Number ('42abc') returns NaN because the entire string 
+   must be a valid number for Number() to succeed.
+   parseInt('42abc') returns 42 because parseInt reads
+   from left to right and stops converting when it reaches a
+   non-numeric character.
+   Example:
+   Number('42abc')  //NaN
+   parseInt('42abc') // 42
+
+   2. I would sue parseFloat when decimal values are valid and important.
+      Example: prices, measurements, temperatures, weights, and percentages often contain decimal places.
+      Example: 
+      parseFloat('19.99')  // 19.99
+      parseInt('19.99')    // 19
+
+      3. Number ('') returns 0. JavaScript converts it to zero.
+         This can create bugs when a user submits a blank form field
+         and the application treats the empty value as a real number.
+*/
+
+/* Console Output
+
+===== Challenge 3 Output =====
+
+====== a = '123' =====
+Original Value: 123
+Original Type: string
+Number(): 123 | Type: number
+parseInt(): 123 | Type: number
+parseFloat(): 123 | Type: number
+Boolean(): true | Type: boolean
+String(): 123 | Type: string
+
+===== b = '3.14' =====
+Original Value: 3.14
+Original Type: string
+Number(): 3.14 | Type: number
+parseInt(): 3.14 | Type: number
+parseFloat(): 3.14 | Type: number
+Boolean(): true | Type: boolean
+String(): 3.14 | Type: string
+
+===== c = 'hello' =====
+Original Value: hello
+Original Type: string
+Number(): NaN | Type: number
+parseInt(): NaN | Type: number
+parseFloat(): NaN | Type: number
+Boolean(): true | Type: boolean
+String(): hello | Type: string
+
+===== d = '42abc' =====
+Original Value: 42abc
+Original Type: string
+Number(): NaN | Type: number
+parseInt(): 42 | Type: number
+parseFloat(): 42 | Type: number
+Boolean(): true | Type: boolean
+String(): 42abc| Type: string
+
+===== e = '' =====
+Original Value: hello
+Original Type: string
+Number(): 0 | Type: number
+parseInt(): NaN | Type: number
+parseFloat(): NaN | Type: number
+Boolean(): false | Type: boolean
+String():  | Type: string
+
+===== f = 0 =====
+Original Value: 0
+Original Type: number
+Number(): 0 | Type: number
+parseInt(): 0 | Type: number
+parseFloat(): 0 | Type: number
+Boolean(): false | Type: boolean
+String(): 0 | Type: string
+
+===== g = 'null' =====
+Original Value: null
+Original Type: object
+Number(): 0 | Type: number
+parseInt(): NaN | Type: number
+parseFloat(): NaN | Type: number
+Boolean(): false | Type: boolean
+String(): null | Type: string
+
+===== h = undefined =====
+Original Value: undefined
+Original Type: undefined
+Number(): NaN | Type: number
+parseInt(): NaN | Type: number
+parseFloat(): NaN | Type: number
+Boolean(): false | Type: boolean
+String(): undefined | Type: string
+ */
