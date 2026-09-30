@@ -449,3 +449,195 @@ null + undefined = NaN
 1 / 0 = Infinity
 0 / 0 = NaN
 */
+
+
+
+// Challenge 5: Do a review for a Junior Developer's code
+
+/* Original code with line-by-line explanations */
+
+// Creates a variable called userName and stores a string.
+var userName = "Sarah";
+
+// Creates a variable called userAge but stores the age as a string
+var userAge = "25";
+
+// Creates a variable called userScore and stores a decimal number.
+var userScore = 85.5;
+
+// Creates a variable called scoreAdjustment but stores it as a string.
+var scoreAdjustment = "10";
+
+// Attempts to calculate a new score.
+var newScore = userScore + scoreAdjustment
+
+// Prints the new score.
+console.log("New score: " + newScore);
+
+// Creates a variable called salary but stores it as a string.
+var salary = "50000";
+
+// Creates a tax rate variable.
+var TAX_RATE = 0.15;
+
+// Calculate tax.
+var tax =  salary * TAX_RATE;
+
+// Prints tax amount.
+console.log("Tax: R" + tax);
+
+// Calculates years until retirement.
+var yearsUntilRetirement = 65 - userAge;
+
+// Prints years until retirement.
+console.log("Years until retirement: " + yearsUntilRetirement);
+
+// Adds a string age to numeric score.
+var totalAgeAndScore = userAge + userScore;
+
+// Prints the result.
+console.log(totalAgeAndScore);
+
+// Stores the word "false" as a string.
+var isAdmin = "false";
+
+// Converts the string to a Boolean.
+console.log("Admin: " + Boolean(isAdmin));
+
+
+/* Code Review: 
+   Issue 1: 
+   Using var instead of const or let.
+   Modern JavaScript prefers const and let because they
+   have block scope and avoid accidental redeclarations.
+
+   Issue 2:
+   userAge is stored as string instead of a number.
+   This causes unexpected type coercion during calculations.
+
+   Issue 3: 
+   scoreAdjustment is stored as a string.
+   Adding it to a number causes concatenation instead of mathematical addition.
+
+   Issue 4: 
+   newScore becomes "85.510" instead of 95.5 becauses a 
+   number plus a string produces a string.
+
+   Issue 5:
+   salary is stored as a string.
+   Although JavaScript converts it automatically during
+   multiplication, replying on implicit conversion is risky.
+
+   Issue 6: 
+   userAge + userScore produces "2585.5" instead of 110.5 
+   because JavaScript performs string concatenation.
+
+   Issue 7:
+   isAdmin contains the text "false", which is still a non-empty string.
+
+   Issue 8:
+   Boolean("false") returns true because every non-empty string is truthy.
+
+   Issue 9:
+   Variable naming can be improved with clearer, more descriptive names.
+
+   Issue 10: 
+   Template literals would improve readability compared to be repeated
+   string concatenation.
+*/
+
+
+/* Corrected Version */
+
+//  Use const because the name should not change.
+const correctedUserName = "Sarah";
+
+// Store age as a number.
+const correctedUserAge = 25;
+
+// Store score as a number.
+const correctedUserScore = 85.5;
+
+// Store adjustment as a number.
+const correctedScoreAdjustment = 10;
+ 
+// Numeric addition now works correctly.
+const correctedNewScore =
+correctedUserScore + correctedScoreAdjustment;
+ 
+// Use template literals for readability.
+console.log(`Corrected New Score: ${correctedNewScore}`);
+ 
+// Store salary as a number instead of a string.
+const correctedSalary = 50000;
+ 
+// Tax rate should remain constant.
+const correctedTaxRate = 0.15;
+ 
+// Perform accurate tax calculation.
+const correctedTax = correctedSalary * correctedTaxRate;
+ 
+console.log(`Corrected Tax: R${correctedTax}`);
+ 
+// Numeric calculation now behaves correctly.
+const correctedYearsUntilRetirement =
+65 - correctedUserAge;
+ 
+console.log(
+`Corrected Years Until Retirement: ${correctedYearsUntilRetirement}`
+);
+ 
+// Both values are numbers, so real addition occurs.
+const correctedTotalAgeAndScore =
+correctedUserAge + correctedUserScore;
+ 
+console.log(
+`Corrected Total Age And Score: ${correctedTotalAgeAndScore}`
+);
+ 
+// Store a real Boolean instead of a string.
+const correctedIsAdmin = false;
+ 
+console.log(`Corrected Admin: ${correctedIsAdmin}`);
+
+/* Review summary 
+
+I replaced var with const because none of the values
+need reassignment. I converted numeric data that was
+stored as strings into proper numbers to prevent
+unexpected type coercion.
+ 
+I also replaced string concatenation with template
+literals to improve readability and maintainability.
+Finally, I replaced the string "false" with the actual
+Boolean value false so the admin status behaves as
+intended.
+
+*/
+
+/* Console Output 
+
+New score: 85.510
+Tax: R7500
+Years until retirement: 40
+2585.5
+Admin: true
+ 
+Corrected New Score: 95.5
+Corrected Tax: R7500
+Corrected Years Until Retirement: 40
+Corrected Total Age And Score: 110.5
+Corrected Admin: false
+
+*/
+
+/* Important interview point: The biggest trick in this challenge is:
+   Boolean("false")
+   true
+
+   Because "false" is a non-empty string, and all non-empty strings are truthy in JavaScript. 
+   This is one of the most common mistakes.
+*/
+
+
+
