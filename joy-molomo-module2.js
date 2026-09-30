@@ -34,8 +34,8 @@ let emptyValue = null;
 
 // Display all variables in the consol.
 console.log("==== Challenge 1 Output ====");
-console.log("Full Name:", JoyMolomo);
-console.log("Age:", 22);
+console.log("Full Name:", fullName);
+console.log("Age:", age);
 console.log("Enjoys JavaScript:", enjoysJavaScript);
 console.log("Favourite Temperature:", favouriteTemperature);
 console.log("Invalid Number:", invalidNumber);
