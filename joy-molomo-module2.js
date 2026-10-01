@@ -641,3 +641,102 @@ Corrected Admin: false
 
 
 
+// CHALLENGE 6: WHY DOES 0.1 + 0.2 NOT EQUAL 0.3?
+
+console.log("\n===== CHALLENGE 6 OUTPUT =====");
+ 
+// These examples demonstrate floating-point precision
+// problems that occur in JavaScript and many other
+// programming languages.
+ 
+console.log("0.1 + 0.2 =", 0.1 + 0.2);
+ 
+console.log("0.3 - 0.1 =", 0.3 - 0.1);
+ 
+console.log("0.1 * 3 =", 0.1 * 3);
+ 
+console.log(
+"0.1 + 0.2 === 0.3 =",
+0.1 + 0.2 === 0.3
+);
+
+// SAFE COMPARISON USING Number.EPSILON
+// Calculate the difference between the values.
+const difference = Math.abs((0.1 + 0.2) - 0.3);
+ 
+// If the difference is extremely small, we treat
+// the values as equal.
+const safeComparison = difference < Number.EPSILON;
+ 
+console.log(
+"Safe comparison using Number.EPSILON =",
+safeComparison
+);
+
+/* WHY DOES THIS HAPPEN? 
+  
+JavaScript uses the IEEE 754 floating-point standard
+to store decimal numbers. Many decimal fractions,
+including 0.1 and 0.2, cannot be represented exactly
+in binary form.
+ 
+Instead, JavaScript stores the closest available
+binary approximation. These tiny rounding errors
+become visible when certain calculations are
+performed.
+ 
+For example:
+ 
+0.1 becomes approximately
+0.10000000000000000555...
+ 
+0.2 becomes approximately
+0.20000000000000001110...
+ 
+When these approximations are added together,
+the result is:
+ 
+0.30000000000000004
+ 
+instead of exactly 0.3.
+ 
+This behavior is not a bug specific to JavaScript.
+It occurs in most programming languages that use
+IEEE 754 floating-point numbers.
+
+WHAT IS Number.EPSILON?
+
+Number.EPSILON is the smallest difference between 1
+and the next representable floating-point number.
+ 
+It is approximately:
+ 
+0.0000000000000002220446049250313
+ 
+We use Number.EPSILON because comparing floating-point
+numbers with === is often unsafe. Instead of checking
+whether two values are exactly equal, we check whether
+they are close enough to be considered equal.
+ 
+This technique is important in financial software,
+scientific calculations, gaming engines, and any
+application that performs decimal calculations.
+ 
+Financial systems often store money as cents instead
+of decimal currency values because whole numbers do
+not suffer from floating-point precision problems.
+*/
+
+
+/* Console Output 
+    
+  ===== CHALLENGE 6 OUTPUT =====
+0.1 + 0.2 = 0.30000000000000004
+0.3 - 0.1 = 0.19999999999999998
+0.1 * 3 = 0.30000000000000004
+0.1 + 0.2 === 0.3 = false
+Safe comparison using Number.EPSILON = true
+
+*/
+
+
