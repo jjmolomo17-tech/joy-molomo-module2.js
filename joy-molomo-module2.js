@@ -740,3 +740,156 @@ Safe comparison using Number.EPSILON = true
 */
 
 
+// CHALLENGE 7: REFACTOR THIS CODE
+
+/* ORIGINAL code with review comments 
+
+ PROBLEM 1:
+The variable name "p" is too short and does not
+describe what the value represents.
+*/
+var p = "199.99";
+ 
+/*
+PROBLEM 2:
+The variable name "q" is unclear.
+Future developers would not know what it means.
+*/
+var q = "3";
+ 
+/*
+PROBLEM 3:
+The variable name "t" is vague.
+Descriptive names make code easier to maintain.
+*/
+var t = 0.15;
+ 
+/*
+PROBLEM 4:
+The values are stored as strings. Although JavaScript
+can convert them automatically during multiplication,
+relying on implicit conversion is risky.
+*/
+var sub = p * q;
+ 
+/*
+PROBLEM 5:
+Variable name "sub" is abbreviated and unclear.
+A name like subtotal would be easier to understand.
+*/
+var tax = sub * t;
+ 
+/*
+PROBLEM 6:
+Variable name "tot" is abbreviated and unclear.
+*/
+var tot = sub + tax;
+ 
+/*
+PROBLEM 7:
+Variable name "r" does not explain its purpose.
+*/
+var r = "Total: " + tot;
+ 
+/*
+PROBLEM 8:
+Uses string concatenation instead of template literals.
+*/
+console.log(r);
+
+/* Fully corrected version
+
+Why this version is better:
+ 
+1. Uses const instead of var because values do not
+need reassignment.
+ 
+2. Uses descriptive names that clearly communicate
+purpose.
+ 
+3. Uses explicit Number() conversion instead of
+relying on JavaScript coercion.
+ 
+4. Uses template literals for cleaner output.
+ 
+5. Makes calculations easier to read and maintain.
+*/
+ 
+// Product price stored as text.
+// Explicit conversion ensures the value is a number.
+const productPrice = Number("199.99");
+ 
+// Quantity purchased.
+// Converted explicitly to avoid hidden type coercion.
+const quantity = Number("3");
+ 
+// Tax rate as a decimal percentage.
+// Using const because this value should never change.
+const taxRate = 0.15;
+ 
+// Calculate subtotal before tax.
+const subtotal = productPrice * quantity;
+ 
+// Calculate tax amount.
+const taxAmount = subtotal * taxRate;
+ 
+// Calculate final total.
+const total = subtotal + taxAmount;
+ 
+// Template literals improve readability.
+const resultMessage = `Total: ${total}`;
+ 
+// Display final result.
+console.log(resultMessage);
+ 
+/*
+
+Summary for junior developer 
+
+I replaced all var declarations with const because
+none of the values are reassigned.
+ 
+I renamed p, q, t, sub, tot, and r to meaningful
+names so other developers can understand the code
+without additional explanation.
+ 
+I used explicit Number() conversions to prevent
+unexpected type coercion and make the code's intent
+clear.
+ 
+I also replaced string concatenation with a template
+literal because it is easier to read and maintain.
+ 
+These changes make the code more professional,
+predictable, and easier to support in a production
+environment.
+*/
+ 
+/*
+
+Console output
+Total: 689.965
+Total: 689.965
+
+Explanation of the output:
+The first "Total: 689.965" comes from the original
+code.
+ 
+The second "Total: 689.965" comes from the corrected
+version.
+ 
+Calculation:
+ 
+199.99 × 3 = 599.97
+ 
+599.97 × 0.15 = 89.9955
+ 
+599.97 + 89.9955 = 689.9655
+ 
+JavaScript displays:
+ 
+689.965
+ 
+because of floating-point precision and console
+formatting behavior.
+*/
