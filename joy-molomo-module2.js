@@ -1029,3 +1029,67 @@ NaN
 1055
 1010
 */
+
+
+// Challenge 10. "Talk me through what you learnt"
+
+/* 
+1. The single most important thing I learnt is that JavaScript
+will often change data types automatically behind the scenes.
+At first I assumed values would stay in the type I gave them,
+but I discovered that JavaScript frequently performs type
+coercion, which can produce results that are unexpected if you
+do not pay close attention to the data types you are working with.
+ 
+Learning how strings, numbers, booleans, null, undefined,
+and NaN behave helped me understand why some expressions
+produce surprising results. I now realise that understanding
+data types is essential because even small mistakes can lead
+to bugs that are difficult to find.
+
+2. The typeof operator tells us what data type a value belongs to.
+For example, typeof "Hello" returns "string" and typeof 25
+returns "number". I would use typeof when I need to check what
+kind of data I am working with before performing calculations
+or processing user input.
+ 
+Number.isNaN is specifically used to check whether a value is
+the special NaN value. For example, Number("hello") returns NaN,
+and Number.isNaN(Number("hello")) returns true. I would use
+Number.isNaN when validating input from users to make sure a
+calculation can safely be performed.
+
+3. A realistic example would be an online shopping cart where the
+quantity entered by the user comes from a form as a string.
+If the developer forgets to convert the value to a number,
+calculations may behave unexpectedly and produce incorrect totals.
+ 
+For example, adding "2" and 3 could result in "23" instead of 5.
+If the incorrect result only appears under certain conditions,
+the bug might go unnoticed for a long time and affect customer
+orders or financial reports before it is discovered.
+
+4. Implicit type coercion happens when JavaScript automatically
+converts a value from one type to another without the developer
+asking it to. An example from this project was "5" + 3, which
+produced "53" because JavaScript automatically converted the
+number into a string and performed concatenation.
+ 
+Explicit type coercion happens when the developer intentionally
+converts a value to a different type. An example from this
+project was Number(quantityInput), where I deliberately converted
+a string from user input into a number before performing
+calculations for the receipt generator.
+
+5. The concept I would emphasise the most is type coercion.
+It looks simple at first, but it can completely change how a
+program behaves. Many beginner developers assume JavaScript will
+always do what they expect, but the language sometimes converts
+values automatically in ways that are surprising.
+ 
+I would focus on helping beginners understand how strings,
+numbers, booleans, null, undefined, and NaN interact with one
+another during calculations. Once someone understands type
+coercion, many of the confusing JavaScript interview questions
+become much easier to answer and explain.
+*/
