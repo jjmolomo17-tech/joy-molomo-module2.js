@@ -791,105 +791,130 @@ Variable name "r" does not explain its purpose.
 */
 var r = "Total: " + tot;
  
+
+
+
+// CHALLENGE 8: Whiteboard Challenge
+// BUILD A RECEIPT GENERATOR
+
+
 /*
-PROBLEM 8:
-Uses string concatenation instead of template literals.
-*/
-console.log(r);
+VARIABLES AND DATA TYPES
 
-/* Fully corrected version
+receiptProductName      : string
+receiptUnitPrice        : number
+receiptQuantityInput    : string
+receiptTaxRate          : number
+receiptQuantity         : number
 
-Why this version is better:
- 
-1. Uses const instead of var because values do not
-need reassignment.
- 
-2. Uses descriptive names that clearly communicate
-purpose.
- 
-3. Uses explicit Number() conversion instead of
-relying on JavaScript coercion.
- 
-4. Uses template literals for cleaner output.
- 
-5. Makes calculations easier to read and maintain.
+Using descriptive variable names makes the code easier
+to read and prevents naming conflicts with variables
+from previous challenges.
 */
- 
-// Product price stored as text.
-// Explicit conversion ensures the value is a number.
-const productPrice = Number("199.99");
- 
-// Quantity purchased.
-// Converted explicitly to avoid hidden type coercion.
-const quantity = Number("3");
- 
-// Tax rate as a decimal percentage.
-// Using const because this value should never change.
-const taxRate = 0.15;
- 
-// Calculate subtotal before tax.
-const subtotal = productPrice * quantity;
- 
-// Calculate tax amount.
-const taxAmount = subtotal * taxRate;
- 
-// Calculate final total.
-const total = subtotal + taxAmount;
- 
-// Template literals improve readability.
-const resultMessage = `Total: ${total}`;
- 
-// Display final result.
-console.log(resultMessage);
- 
+
+// Product name stored as a string.
+const receiptProductName = "Wireless Mouse";
+
+// Unit price stored as a number because calculations
+// will be performed on it.
+const receiptUnitPrice = 249.99;
+
+// Quantity stored as a string to simulate user input
+// coming from a form field.
+const receiptQuantityInput = "3";
+
+// VAT rate stored as a number.
+const receiptTaxRate = 0.15;
+
+// Explicitly convert the quantity string to a number.
+// This avoids relying on JavaScript's automatic
+// type coercion.
+const receiptQuantity = Number(receiptQuantityInput);
+
+// Calculate subtotal.
+const receiptSubtotal =
+  receiptUnitPrice * receiptQuantity;
+
+// Calculate VAT.
+const receiptTax =
+  receiptSubtotal * receiptTaxRate;
+
+// Calculate total.
+const receiptTotal =
+  receiptSubtotal + receiptTax;
+
+// Format receipt output using template literals and
+// line breaks for readability.
+const receiptOutput = `
+========= RECEIPT =========
+Product: ${receiptProductName}
+Unit Price: R${receiptUnitPrice.toFixed(2)}
+Quantity: ${receiptQuantity}
+
+Subtotal: R${receiptSubtotal.toFixed(2)}
+Tax (15%): R${receiptTax.toFixed(2)}
+Total: R${receiptTotal.toFixed(2)}
+
+`;
+
+console.log(receiptOutput);
+
+// EDGE CASE DEMONSTRATION
+
+
+// Simulate invalid user input.
+const invalidReceiptQuantityInput = "abc";
+
+// Attempt conversion.
+const invalidReceiptQuantity =
+  Number(invalidReceiptQuantityInput);
+
+console.log(
+  "Invalid Quantity Input:",
+  invalidReceiptQuantityInput
+);
+
+console.log(
+  "Converted Value:",
+  invalidReceiptQuantity
+);
+
+/*
+EDGE CASE EXPLANATION
+
+The string "abc" cannot be converted into a number.
+
+JavaScript therefore returns NaN
+(Not a Number).
+
+In a real application, we should validate user input
+before performing calculations.
+
+Example:
+
+if (Number.isNaN(receiptQuantity)) {
+    console.log("Please enter a valid quantity.");
+}
+
+This prevents calculation errors and improves the
+user experience.
+*/
+
 /*
 
-Summary for junior developer 
+Console Output
 
-I replaced all var declarations with const because
-none of the values are reassigned.
- 
-I renamed p, q, t, sub, tot, and r to meaningful
-names so other developers can understand the code
-without additional explanation.
- 
-I used explicit Number() conversions to prevent
-unexpected type coercion and make the code's intent
-clear.
- 
-I also replaced string concatenation with a template
-literal because it is easier to read and maintain.
- 
-These changes make the code more professional,
-predictable, and easier to support in a production
-environment.
-*/
- 
-/*
 
-Console output
-Total: 689.965
-Total: 689.965
+========= RECEIPT =========
+Product: Wireless Mouse
+Unit Price: R249.99
+Quantity: 3
 
-Explanation of the output:
-The first "Total: 689.965" comes from the original
-code.
- 
-The second "Total: 689.965" comes from the corrected
-version.
- 
-Calculation:
- 
-199.99 × 3 = 599.97
- 
-599.97 × 0.15 = 89.9955
- 
-599.97 + 89.9955 = 689.9655
- 
-JavaScript displays:
- 
-689.965
- 
-because of floating-point precision and console
-formatting behavior.
+Subtotal: R749.97
+Tax (15%): R112.50
+Total: R862.47
+
+
+Invalid Quantity Input: abc
+Converted Value: NaN
 */
