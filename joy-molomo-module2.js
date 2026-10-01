@@ -918,3 +918,114 @@ Total: R862.47
 Invalid Quantity Input: abc
 Converted Value: NaN
 */
+
+
+
+// Challenge 9: Predict the output before it runs
+
+/*
+PREDICTIONS BEFORE RUNNING
+ 
+console.log(typeof result)
+Prediction: "number"
+ 
+console.log(result)
+Prediction: 2
+ 
+console.log(typeof result2)
+Prediction: "number"
+ 
+console.log(result2)
+Prediction: NaN
+ 
+console.log(result2 + 1)
+Prediction: NaN
+ 
+console.log(result3)
+Prediction: "1055"
+ 
+console.log(result4)
+Prediction: "1010"
+*/
+ 
+// String value containing a number.
+let mystery = "10";
+ 
+// Numeric value.
+let count = 5;
+ 
+// Division forces numeric conversion.
+// "10" becomes 10.
+let result = mystery / count;
+ 
+// Display the type of result.
+console.log(typeof result);
+ 
+// Display the value.
+console.log(result);
+ 
+// String containing invalid numeric data.
+let mystery2 = "10a";
+ 
+// Numeric divisor.
+let count2 = 5;
+ 
+// JavaScript attempts to convert "10a"
+// into a number and fails.
+let result2 = mystery2 / count2;
+ 
+// NaN is still considered a number type.
+console.log(typeof result2);
+ 
+// Display NaN.
+console.log(result2);
+ 
+// Any math involving NaN remains NaN.
+console.log(result2 + 1);
+ 
+// String value.
+let mystery3 = "10";
+ 
+// Because the first value is a string,
+// JavaScript performs string concatenation.
+let result3 = mystery3 + 5 + 5;
+ 
+// 5 + 5 happens first because both values
+// are numbers.
+// Then 10 is concatenated with "10".
+let result4 = 5 + 5 + mystery3;
+ 
+console.log(result3);
+ 
+console.log(result4);
+ 
+/*
+WHAT I LEARNED
+ 
+I correctly predicted that division forces JavaScript
+to convert strings into numbers when possible.
+ 
+I also learned that NaN has the data type "number"
+even though it represents an invalid numerical result.
+ 
+The biggest lesson is that the + operator behaves
+differently depending on whether strings are involved.
+ 
+When a string appears first, JavaScript performs
+concatenation. When numbers are evaluated first,
+addition happens before concatenation.
+*/
+ 
+/*
+
+CONSOLE OUTPUT
+
+ 
+number
+2
+number
+NaN
+NaN
+1055
+1010
+*/
