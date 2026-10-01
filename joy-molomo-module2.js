@@ -1092,4 +1092,6 @@ numbers, booleans, null, undefined, and NaN interact with one
 another during calculations. Once someone understands type
 coercion, many of the confusing JavaScript interview questions
 become much easier to answer and explain.
+
+
 */
